@@ -60,12 +60,12 @@ O `docker-compose.yml` já define:
 
 ## Rodando o Projeto
 
-Subir o banco e a API pelo Docker:
+**Subir o banco e a API pelo Docker:**
 
 ```bash
 docker-compose up --build
 ```
-Confirmar que os containers estão rodando:
+**Confirmar que os containers estão rodando:**
 
 ```bash
 docker ps
@@ -74,11 +74,14 @@ docker ps
 
 `order-api-app-1 `→ API
 
-Ver logs da API:
+**Ver logs da API:**
 
 ```bash
 docker-compose logs -f
 ```
+
+---
+
 ## Testando a API
 
 Criar conversão (parceiro válido)
@@ -113,10 +116,16 @@ Parceiro desconhecido → `unknown partner`
 
 Assinatura inválida → `invalid signature`
 
+---
+
+
 **Testes automatizados**
 ```bash
 go test ./...
 ```
+
+---
+
 **Considerações**
 
 - Idempotência garantida pelo tratamento de duplicidade no MySQL (erro 1062).
@@ -126,6 +135,8 @@ go test ./...
 - Estrutura modular seguindo boas práticas Go.
 
 - Docker garante ambiente consistente e fácil deploy.
+
+---
 
 ## Autor
 **Victor Hugo**
