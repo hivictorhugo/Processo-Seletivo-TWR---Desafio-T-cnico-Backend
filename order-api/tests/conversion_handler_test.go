@@ -2,7 +2,6 @@ package tests
 
 import (
     "bytes"
-    "database/sql"
     "encoding/hex"
     "net/http"
     "net/http/httptest"

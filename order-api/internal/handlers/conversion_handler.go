@@ -9,6 +9,7 @@ import (
 
     "github.com/username/affiliate-conversions/internal/models"
     "github.com/username/affiliate-conversions/internal/utils"
+     "github.com/go-sql-driver/mysql"
 )
 
 type ConversionHandler struct {
