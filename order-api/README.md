@@ -111,7 +111,9 @@ Rodar novamente o mesmo comando deve retornar:
 ```json
 {"status":"duplicate"}
 ```
-**Testar parceiro inválido ou assinatura incorreta**
+
+## Testar parceiro inválido ou assinatura incorreta
+
 Parceiro desconhecido → `unknown partner`
 
 Assinatura inválida → `invalid signature`
