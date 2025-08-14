@@ -64,29 +64,28 @@ Subir o banco e a API pelo Docker:
 
 ```bash
 docker-compose up --build
+```
 Confirmar que os containers estão rodando:
 
-bash
-Copiar
-Editar
+```bash
 docker ps
-order-api-db-1 → MySQL
+```
+`order-api-db-1 `→ MySQL
 
-order-api-app-1 → API
+`order-api-app-1 `→ API
 
 Ver logs da API:
 
-bash
-Copiar
-Editar
+```bash
 docker-compose logs -f
-Testando a API
+```
+## Testando a API
+
 Criar conversão (parceiro válido)
 No PowerShell:
 
-powershell
-Copiar
-Editar
+```powershell
+
 $body = '{"transaction_id":"tx_test_1","partner_name":"Partner A","sale_amount":99.90}'
 $mac = New-Object System.Security.Cryptography.HMACSHA256
 $mac.Key = [Text.Encoding]::UTF8.GetBytes("secret_for_partner_a")
@@ -96,37 +95,37 @@ Invoke-RestMethod -Uri "http://localhost:8080/conversions" -Method Post -Body $b
     "X-Partner-Id" = "partner-a"
     "X-Signature" = $sig
 } -ContentType "application/json"
+```
 Resposta esperada:
 
-json
-Copiar
-Editar
+```json
 {"status":"created"}
-Testar duplicidade (mesma transação)
+```
+
+**Testar duplicidade (mesma transação)**
 Rodar novamente o mesmo comando deve retornar:
 
-json
-Copiar
-Editar
+```json
 {"status":"duplicate"}
-Testar parceiro inválido ou assinatura incorreta
-Parceiro desconhecido → unknown partner
+```
+**Testar parceiro inválido ou assinatura incorreta**
+Parceiro desconhecido → `unknown partner`
 
-Assinatura inválida → invalid signature
+Assinatura inválida → `invalid signature`
 
-Testes automatizados
-bash
-Copiar
-Editar
+**Testes automatizados**
+```bash
 go test ./...
-Considerações
-Idempotência garantida pelo tratamento de duplicidade no MySQL (erro 1062).
+```
+**Considerações**
 
-Segurança via HMAC por parceiro.
+- Idempotência garantida pelo tratamento de duplicidade no MySQL (erro 1062).
 
-Estrutura modular seguindo boas práticas Go.
+- Segurança via HMAC por parceiro.
 
-Docker garante ambiente consistente e fácil deploy.
+- Estrutura modular seguindo boas práticas Go.
 
-Autor
-Victor Hugo
+- Docker garante ambiente consistente e fácil deploy.
+
+## Autor
+**Victor Hugo**
