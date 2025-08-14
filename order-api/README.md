@@ -128,7 +128,7 @@ go test ./...
 
 ---
 
-**Considerações**
+## Considerações
 
 - Idempotência garantida pelo tratamento de duplicidade no MySQL (erro 1062).
 
